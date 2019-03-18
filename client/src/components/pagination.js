@@ -28,11 +28,11 @@ class Pagination extends React.Component {
                 pageNumbers.push(i);
             }
         } else if (pagination.last_page >= pagination.limit) {
-            for (let i = pagination.last_page - pagination.limit; i < pagination.last_page; i++) {
+            for (let i = pagination.last_page - pagination.limit; i <=  pagination.last_page; i++) {
                 pageNumbers.push(i);
             }
         } else {
-            for (let i = 0; i < pagination.last_page; i++) {
+            for (let i = 1; i <= pagination.last_page; i++) {
                 pageNumbers.push(i);
             }
         }
