@@ -24,3 +24,10 @@ Steps to start project
 * goto project > server > npm install (for server dependencies installation)
 * project root > npm start (start both server and client concurrently)
 * Both client and server has .env file for setting PORT default(client:3006 -- server:8080)
+
+### Application Flow
+
+* This Web App is just a single page web application.
+* Using third part free JSON Api for data listing.
+* Top input field for searching with in received data list.
+* Pagination for listed items.
