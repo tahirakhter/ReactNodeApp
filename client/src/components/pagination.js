@@ -3,10 +3,6 @@ import {connect} from 'react-redux';
 
 class Pagination extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     changePage = (page, action) => {
         this.props.dispatch({
             type: action,

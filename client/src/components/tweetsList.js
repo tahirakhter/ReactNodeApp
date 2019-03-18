@@ -2,10 +2,6 @@ import React from 'react';
 
 class TweetsView extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     getDataView = (error, paginatedList) => {
         if (error) {
             return <tbody>
