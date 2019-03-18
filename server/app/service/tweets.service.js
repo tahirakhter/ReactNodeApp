@@ -1,23 +1,20 @@
-const fetch = require("cross-fetch");
+const axios = require('axios');
 
-module.exports.getTweetsList = async () => {
-    return new Promise((resolve, reject) => {
-        const tweetsApi = "https://jsonplaceholder.typicode.com/comments";
-        fetch(tweetsApi, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-            .then(response => response.json())
-            .then((data) => {
-                    resolve(data);
-                },
-                (error) => {
-                    reject(new Error('failed to fetch'));
-                })
-            .catch(error => {
-                reject(new Error('failed to fetch'));
-            })
+module.exports.getTweetsList = () => {
+    const reqData = {
+        method: 'GET',
+        url: 'https://jsonplaceholder.typicode.com/comments',
+        data: {},
+        headers: {}
+    };
+
+    return axios(reqData).then((response) => {
+        if (response) {
+            return response.data;
+        } else {
+            return new Error('failed to fetch');
+        }
+    }).catch((error) => {
+        return error.response;
     })
 }

@@ -1,12 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {changePage} from "../actions/actions";
 
 class Pagination extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
     }
 
     changePage = (page, action) => {
@@ -16,16 +14,31 @@ class Pagination extends React.Component {
         });
     }
 
+
+    //generate pages
     getPaginationList = (error, filteredList, itemsPerPage) => {
         let pagination = {
             current_page: this.props.currentPage,
-            last_page: Math.ceil(filteredList.length / itemsPerPage)
+            last_page: Math.ceil(filteredList.length / itemsPerPage),
+            count: filteredList.length,
+            limit:10
         };
 
         // for displaying page numbers
         const pageNumbers = [];
-        for (let i = pagination.current_page; i <= pagination.last_page; i++) {
-            pageNumbers.push(i);
+
+        if ((pagination.current_page + pagination.limit) <= pagination.last_page) {
+            for (let i = pagination.current_page; i < (pagination.current_page + pagination.limit); i++) {
+                pageNumbers.push(i);
+            }
+        } else if (pagination.last_page >= pagination.limit) {
+            for (let i = pagination.last_page - pagination.limit; i < pagination.last_page; i++) {
+                pageNumbers.push(i);
+            }
+        } else {
+            for (let i = 0; i < pagination.last_page; i++) {
+                pageNumbers.push(i);
+            }
         }
 
         return <ul className="pagination">

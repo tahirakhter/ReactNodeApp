@@ -4,7 +4,6 @@ class TweetsView extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
     }
 
     getDataView = (error, paginatedList) => {

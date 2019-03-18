@@ -53,6 +53,7 @@ class App extends Component {
         }
     }
 
+    //get tweets data
     getTweetsList = () => {
         const reqData = {
             method: 'GET',
@@ -87,6 +88,7 @@ class App extends Component {
         })
     }
 
+    //return paginated resulted
     paginatedList(items) {
         let page = this.props.currentPage;
         let per_page = this.state.itemsPerPage || 10;
@@ -100,18 +102,22 @@ class App extends Component {
             <div className="container">
                 <div className="row">
                     <div className="col-md">
-                        <input className="form-control" name="searchQuery" placeholder="type to search"
-                               onChange={this.onInputChange}/>
+                        <div className="alert alert-warning" role="alert">
+                            <input className="form-control" name="searchQuery" placeholder="type to search"
+                                   onChange={this.onInputChange}/>
+                        </div>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-md">
-                        {this.state.paginatedList.length > 0 ? <Pagination data={this.state}/> : ''}
-                    </div>
+
                 </div>
                 <div className="row">
                     <div className="col-md">
                         {this.state.paginatedList.length > 0 ? <TweetsView data={this.state}/> : this.state.error}
+
+                        <div className="col-md">
+                            {this.state.paginatedList.length > 0 ? <Pagination data={this.state}/> : ''}
+                        </div>
                     </div>
                 </div>
             </div>
